@@ -9,7 +9,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "unsetup": "rm -rf package-lock.json && rm -rf node_modules && rm -rf platforms && rm -rf plugins",
+    "setup": "npm run unsetup && npm i"
   },
   "private": true,
   "dependencies": {
