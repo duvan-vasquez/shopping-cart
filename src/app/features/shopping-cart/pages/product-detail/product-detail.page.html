@@ -1,0 +1,46 @@
+<app-header [title]="'Shopping Cart'" [cartClickDisabled]="true" [hasBack]="true"></app-header>
+
+<ion-content [fullscreen]="true">
+  <ng-container *ngIf="productsCart.length > 0 else noData">
+    <cdk-virtual-scroll-viewport itemSize="56" minBufferPx="900" maxBufferPx="1350">
+      <ion-list>
+        <ion-item *cdkVirtualFor="let product of productsCart">
+          <ion-avatar slot="start">
+            <img [alt]="product.title" [src]="product.images[0]" />
+          </ion-avatar>
+          <ion-label class="ion-text-wrap">
+            <h3>{{product.title }}</h3>
+            <p>Quantity: <span>{{product.quantity}}</span></p>
+            <p>$ <span>{{product.price * product.quantity}}</span></p>
+          </ion-label>
+          <ion-button (click)="removeCart(product)" slot="end" color="danger">
+            <ion-icon name="remove"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </cdk-virtual-scroll-viewport>
+  </ng-container>
+
+  <ng-template #noData>
+    <ion-card>
+      <ion-card-content class="ion-text-center" (click)="goToProducts()">
+        <ion-buttons slot="start" icon="home">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-icon slot="start" size="large" name="cart-outline"></ion-icon>
+        <p>
+          <ion-text size="large" color="primary">Your shopping cart is empty.</ion-text>
+        </p>
+        <p>
+          <ion-text>Click here to select a product to continue shopping</ion-text>
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-content>
+<ion-footer>
+  <ion-toolbar class="footer">
+    <ion-label>Total a Pagar: </ion-label>
+    <ion-text slot="end">$ <span>{{totalAmount}}</span></ion-text>
+  </ion-toolbar>
+</ion-footer>
