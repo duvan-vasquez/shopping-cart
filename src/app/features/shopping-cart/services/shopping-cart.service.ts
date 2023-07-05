@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  private _urlProducts: string = `${environment.API_URL}products`;
+  private _urlProducts: string = `${environment.API_URL}products.json`;
 
   private _shoppingCart: ShoppingProduct = {
     type: ShoppingTypes.ListProduct,

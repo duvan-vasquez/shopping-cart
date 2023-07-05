@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://dummyjson.com/'
+  API_URL: '/assets/data/'
 };
 
 /*
