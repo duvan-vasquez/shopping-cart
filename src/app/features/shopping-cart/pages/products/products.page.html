@@ -1,0 +1,21 @@
+<app-header [title]="'Productos'"></app-header>
+
+<ion-content [fullscreen]="true">
+  <cdk-virtual-scroll-viewport itemSize="56" minBufferPx="900" maxBufferPx="1350">
+    <ion-list>
+      <ion-item *cdkVirtualFor="let product of products">
+        <ion-avatar slot="start">
+          <img [alt]="product.title" src="{{product.images[0]}}" />
+        </ion-avatar>
+        <ion-label class="ion-text-wrap">
+          <h3>{{product.title }}</h3>
+          <p>$ <span>{{product.price}}</span></p>
+        </ion-label>
+        <ion-button (click)="addToCart(product)" slot="end">
+          <ion-icon slot="start" name="add"></ion-icon>
+          Add
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </cdk-virtual-scroll-viewport>
+</ion-content>
